@@ -1,0 +1,82 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Light Background Video</title>
+  <link rel="stylesheet" type="text/css" media="all" href="style.css" />
+	<style>
+			.other-section{ width:100%; height:500px; background:red; position:relative;}
+			#video-instance{display:none;}
+			#video-section{ width:100%;  background:black; position:relative;}
+			.content{width:740px; padding:10px 0 50px 0; left:50%; margin: 0 0 0 -370px; background:rgba(255, 255, 255, 0.9); position:relative; z-index:2; }
+			.content .subtitle, .content h1{text-align:center;}
+			.content h1{ font-size:2em; margin-bottom:5px;}
+			.content .subtitle{ font-size:0.850em;}
+			.content .explain{ margin-top:100px; padding:0 35px 0 35px;}
+			.content .explain .intro{ margin-bottom:50px;}
+			.content .steps p{ font-size:0.850em;}
+			.content .steps .first-step-code{margin-bottom:25px;}
+			.content .steps .step-code{ margin-bottom:20px; font-size:0.850em;}
+			.content .steps .step-code p{ margin:0;}
+			.content .steps .step-code pre{margin:0;}
+	</style>
+</head>
+<body>
+  <div id="main">
+			<video id="video-instance" poster="http://video-js.zencoder.com/oceans-clip.jpg" preload="auto"   autoplay  muted="muted" loop >
+					<source type="video/ogg" src="http://video-js.zencoder.com/oceans-clip.ogv">
+					<source type="video/mp4" src="http://video-js.zencoder.com/oceans-clip.mp4">
+					<source type="video/mov" src="http://video-js.zencoder.com/oceans-clip.mov">
+			</video>
+			<section id="video-section" class="clearfix">
+					<div class="content">
+							<h1>Light Background Video</h1>
+							<p class="subtitle">The simple implementation for run videos on your html background</p>
+							<div class="explain">
+								<p class="intro">There are some steps to run the class in your application.</p>
+								<div class="steps">
+									<p>First, insert the javascript class in your html body:</p>
+									<div class="first-step-code">
+											<pre style='color:#666;'>&lt;script type<span style='color:#666; '>=</span><span style='color:#ED519C; '>"text/javascript"</span> src<span style='color:#666; '>=</span><span style='color:#ED519C; '>"light-bg-video.js"</span>>&lt;<span style='color:#666; '>/</span>script>
+											</pre>
+									</div>
+
+									<p>Now you need to declare the video tag, specifying all compatible sources for the browsers<p>
+									<div class="step-code">
+										<pre style='color:#666;'>&lt;video id<span style='color:#666; '>=</span><span style='color:#ED519C; '>"video-instance"</span> preload<span style='color:#666; '>=</span><span style='color:#ED519C; '>"auto"</span> autoplay <span style='color:#666; '>loop</span> >
+												&lt;source type<span style='color:#666; '>=</span><span style='color:#ED519C; '>"video/ogg"</span> src<span style='color:#666; '>=</span><span style='color:#ED519C; '>"http://video-js.zencoder.com/oceans-clip.ogv"</span>>
+												&lt;source type<span style='color:#666; '>=</span><span style='color:#ED519C; '>"video/mp4"</span> src<span style='color:#666; '>=</span><span style='color:#ED519C; '>"http://video-js.zencoder.com/oceans-clip.mp4"</span>>
+												&lt;source type<span style='color:#666; '>=</span><span style='color:#ED519C; '>"video/mov"</span> src<span style='color:#666; '>=</span><span style='color:#ED519C; '>"http://video-js.zencoder.com/oceans-clip.mov"</span>>
+										&lt;<span style='color:#666; '>/</span>video>
+										</pre>
+									</div>
+									<p>Set the html taget</p>
+									<div class="step-code">
+											<pre style='color:#666;'>&lt;div id<span style='color:#666; '>=</span><span style='color:#ED519C; '>"video-target"</span>><span style='color:#666; '>.</span><span style='color:#666; '>.</span><span style='color:#666; '>.</span>&lt;<span style='color:#666; '>/</span>div>
+											</pre>
+											<p>Tip: you can customize width and height of your video target. All content inside the video target needs z-index more than 1.</p>
+									</div>
+
+								</div>
+							</div>
+					</div>
+			</section>
+  </div>
+  <script src="light-bg-video.js"></script>
+  <script>
+		var settings = { 
+			target: 'video-section', 
+			video: 'video-instance', 
+			muted: true
+		};
+		var backgroundVideo  = new LightBackgroundVideo(settings);
+		backgroundVideo.init();
+  </script>
+</body>
+</html>
