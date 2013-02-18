@@ -31,7 +31,11 @@ LightBackgroundVideo.prototype.onContentLoaded = function(){
 LightBackgroundVideo.prototype.appendCanvas = function(){
 	this.canvas.style.position = 'absolute';
 	this.canvas.style.top = '0px';
-	this.renderTarget.appendChild(this.canvas);
+	if(this.renderTarget.firstChild){
+		this.renderTarget.insertBefore(this.canvas,this.renderTarget.firstChild);
+	}else{
+		this.renderTarget.appendChild(this.canvas);
+	}
 	this.setDimensions();
 };
 
@@ -61,4 +65,5 @@ LightBackgroundVideo.prototype.addEventListeners = function(){
 
 LightBackgroundVideo.prototype.init = function(){
 	this.addEventListeners();
+	this.video.play();
 };
