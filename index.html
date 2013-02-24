@@ -10,6 +10,16 @@
 
   <title>Light Background Video</title>
   <link rel="stylesheet" type="text/css" media="all" href="style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="prettify.css" />
+  <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="prettify.js"></script>
+<script>
+  !function ($) {
+    $(function(){
+      window.prettyPrint && prettyPrint()   
+    })
+  }(window.jQuery)
+</script>
 	<style>
 			#video-instance{display:none;}
 			#video-section{ width:100%; background:black; position:relative;}
@@ -23,15 +33,14 @@
 			.content .steps .first-step-code{margin-bottom:25px;}
 			.content .steps .step-code{ margin-bottom:20px; font-size:0.850em;}
 			.content .steps .step-code p{ margin:0;}
-			.content .steps .step-code pre{margin:0;}
 	</style>
 </head>
 <body>
   <div id="main">
 			<video id="video-instance" poster="http://video-js.zencoder.com/oceans-clip.jpg" preload="auto"   autoplay  muted="muted" loop >
-					<source type="video/ogg" src="http://video-js.zencoder.com/oceans-clip.ogv">
-					<source type="video/mp4" src="http://video-js.zencoder.com/oceans-clip.mp4">
-					<source type="video/mov" src="http://video-js.zencoder.com/oceans-clip.mov">
+					<source type="video/ogg" src="http://video-js.zencoder.com/oceans-clip.ogv" />
+					<source type="video/mp4" src="http://video-js.zencoder.com/oceans-clip.mp4" />
+					<source type="video/mov" src="http://video-js.zencoder.com/oceans-clip.mov" />
 			</video>
 			<section id="video-section" class="clearfix">
 					<div class="content">
@@ -42,23 +51,27 @@
 								<div class="steps">
 									<p>First, insert the javascript class in your html body:</p>
 									<div class="first-step-code">
-											<pre style='color:#666;'>&lt;script type<span style='color:#666; '>=</span><span style='color:#ED519C; '>"text/javascript"</span> src<span style='color:#666; '>=</span><span style='color:#ED519C; '>"light-bg-video.js"</span>>&lt;<span style='color:#666; '>/</span>script>
-											</pre>
+										<pre class="prettyprint">
+  <code class="language-html">
+  &lt;script type="text/javascript" src="light-bg-video.js"&gt;&lt;/script&gt;</code>
+										</pre>
 									</div>
 
 									<p>Now you need to declare the video tag, specifying all compatible sources for the browsers<p>
-									<div class="step-code">
-										<pre style='color:#666;'>&lt;video id<span style='color:#666; '>=</span><span style='color:#ED519C; '>"video-instance"</span> preload<span style='color:#666; '>=</span><span style='color:#ED519C; '>"auto"</span> autoplay <span style='color:#666; '>loop</span> >
-												&lt;source type<span style='color:#666; '>=</span><span style='color:#ED519C; '>"video/ogg"</span> src<span style='color:#666; '>=</span><span style='color:#ED519C; '>"http://video-js.zencoder.com/oceans-clip.ogv"</span>>
-												&lt;source type<span style='color:#666; '>=</span><span style='color:#ED519C; '>"video/mp4"</span> src<span style='color:#666; '>=</span><span style='color:#ED519C; '>"http://video-js.zencoder.com/oceans-clip.mp4"</span>>
-												&lt;source type<span style='color:#666; '>=</span><span style='color:#ED519C; '>"video/mov"</span> src<span style='color:#666; '>=</span><span style='color:#ED519C; '>"http://video-js.zencoder.com/oceans-clip.mov"</span>>
-										&lt;<span style='color:#666; '>/</span>video>
-										</pre>
-									</div>
+									<pre class="prettyprint">
+ <code class="language-html">
+   &lt;video id="video-instance" poster="poster.jpg" preload="auto" autoplay loop&gt;
+     &lt;source type="video/ogg" src="//video-js.zencoder.com/oceans-clip.ogv"/&gt;
+     &lt;source type="video/mp4" src="//video-js.zencoder.com/oceans-clip.mp4"/&gt;
+     &lt;source type="video/mov" src="//video-js.zencoder.com/oceans-clip.mov"/&gt;
+   &lt;/video&gt;</code>
+									</pre>
 									<p>Set the html taget</p>
-									<div class="step-code">
-											<pre style='color:#666;'>&lt;div id<span style='color:#666; '>=</span><span style='color:#ED519C; '>"video-target"</span>><span style='color:#666; '>.</span><span style='color:#666; '>.</span><span style='color:#666; '>.</span>&lt;<span style='color:#666; '>/</span>div>
-											</pre>
+
+										<pre class="prettyprint">
+<code class="language-html">
+  &lt;section id="video-section"&gt;&lt;/section&gt;</code>
+										</pre>
 											<p>Tip: you can customize width and height of your video target. All content inside the video target needs z-index more than 1.</p>
 									</div>
 
@@ -67,8 +80,12 @@
 					</div>
 			</section>
   </div>
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
   <script src="light-bg-video.js"></script>
+
   <script>
+
 		var settings = { 
 			target: 'video-section', 
 			video: 'video-instance', 
@@ -77,5 +94,6 @@
 		var backgroundVideo  = new LightBackgroundVideo(settings);
 		backgroundVideo.init();
   </script>
+
 </body>
 </html>
