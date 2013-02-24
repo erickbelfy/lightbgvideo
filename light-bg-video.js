@@ -2,7 +2,8 @@
 Author: Erick Belfort
 */
 
-var LightBackgroundVideo = function(settings){
+var LightBackgroundVideo = function(_settings){
+	this.settings = _settings; 
 	this.canvas = document.createElement('canvas');
 	this.context =  this.canvas.getContext('2d');
 	this.canvasWidth = null;
@@ -11,8 +12,6 @@ var LightBackgroundVideo = function(settings){
 
 	this.renderTarget = document.getElementById(settings.target);
 	this.video = document.getElementById(settings.video);
-	this.isMuted(settings.muted);
-	this.autoPlay(settings.autoplay);
 };
 
 LightBackgroundVideo.prototype.play = function(){
@@ -80,5 +79,6 @@ LightBackgroundVideo.prototype.addEventListeners = function(){
 
 LightBackgroundVideo.prototype.init = function(){
 	this.addEventListeners();
-	this.video.play();
+	this.autoPlay(this.settings.autoplay);
+	this.isMuted(this.settings.muted);
 };
