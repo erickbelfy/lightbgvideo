@@ -12,6 +12,21 @@ var LightBackgroundVideo = function(settings){
 	this.renderTarget = document.getElementById(settings.target);
 	this.video = document.getElementById(settings.video);
 	this.isMuted(settings.muted);
+	this.autoPlay(settings.autoplay);
+};
+
+LightBackgroundVideo.prototype.play = function(){
+	this.video.play();
+};
+
+LightBackgroundVideo.prototype.pause = function(){
+	this.video.pause();
+};
+
+LightBackgroundVideo.prototype.autoPlay = function(autoPlay){
+	if(autoPlay){
+		this.play();
+	}
 };
 
 LightBackgroundVideo.prototype.isMuted = function(muted){

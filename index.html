@@ -22,8 +22,8 @@
 </script>
 	<style>
 			#video-instance{display:none;}
-			#video-section{ width:100%; background:black; position:relative;}
-			.content{width:740px; padding:10px 0 50px 0; left:50%; margin: 0 0 0 -370px; background:rgba(255, 255, 255, 0.9); position:relative; z-index:2; }
+			#video-section{ width:100%; height:100%; background:black; position:relative;}
+			.content{width:740px;  padding:10px 0 50px 0; left:50%; margin: 0 0 0 -370px; background:rgba(255, 255, 255, 0.9); position:relative; z-index:2; }
 			.content .subtitle, .content h1{text-align:center;}
 			.content h1{ font-size:2em; margin-bottom:5px;}
 			.content .subtitle{ font-size:0.850em;}
@@ -33,11 +33,13 @@
 			.content .steps .first-step-code{margin-bottom:25px;}
 			.content .steps .step-code{ margin-bottom:20px; font-size:0.850em;}
 			.content .steps .step-code p{ margin:0;}
+			.content .steps .tip{ font-size:0.750em;}
+			.content .steps .final-step{ margin-top:20px;}
 	</style>
 </head>
 <body>
   <div id="main">
-			<video id="video-instance" poster="http://video-js.zencoder.com/oceans-clip.jpg" preload="auto"   autoplay  muted="muted" loop >
+			<video id="video-instance" poster="http://video-js.zencoder.com/oceans-clip.jpg" preload="auto"  loop >
 					<source type="video/ogg" src="http://video-js.zencoder.com/oceans-clip.ogv" />
 					<source type="video/mp4" src="http://video-js.zencoder.com/oceans-clip.mp4" />
 					<source type="video/mov" src="http://video-js.zencoder.com/oceans-clip.mov" />
@@ -47,9 +49,9 @@
 							<h1>Light Background Video</h1>
 							<p class="subtitle">The simple implementation for run videos on your html background</p>
 							<div class="explain">
-								<p class="intro">There are some steps to run the class in your application.</p>
+								<p class="intro"><strong>There are some steps to run the class in your application.</strong></p>
 								<div class="steps">
-									<p>First, insert the javascript class in your html body:</p>
+									<p>1. Insert the javascript class in your html body:</p>
 									<div class="first-step-code">
 										<pre class="prettyprint">
   <code class="language-html">
@@ -57,24 +59,55 @@
 										</pre>
 									</div>
 
-									<p>Now you need to declare the video tag, specifying all compatible sources for the browsers<p>
+									<p>2. Now, you need to declare the video tag, specifying all compatible sources for the browsers<p>
 									<pre class="prettyprint">
  <code class="language-html">
-   &lt;video id="video-instance" poster="poster.jpg" preload="auto" autoplay loop&gt;
+   &lt;video id="video-instance" poster="poster.jpg" preload="auto" loop&gt;
      &lt;source type="video/ogg" src="//video-js.zencoder.com/oceans-clip.ogv"/&gt;
      &lt;source type="video/mp4" src="//video-js.zencoder.com/oceans-clip.mp4"/&gt;
      &lt;source type="video/mov" src="//video-js.zencoder.com/oceans-clip.mov"/&gt;
    &lt;/video&gt;</code>
 									</pre>
-									<p>Set the html taget</p>
+									<p>3. Set the html target</p>
 
 										<pre class="prettyprint">
 <code class="language-html">
   &lt;section id="video-section"&gt;&lt;/section&gt;</code>
 										</pre>
-											<p>Tip: you can customize width and height of your video target. All content inside the video target needs z-index more than 1.</p>
-									</div>
+										<p class="tip">Tip: you can customize width and height of your video target. All content inside the video target require z-index more than 1.</p>
 
+										<p class="final-step">4. To complete, the class require some configuration parameters </p>
+										<pre class="prettyprint">
+<code class="language-javascript">
+ &lt;script&gt;
+
+   var settings = { 
+      target: 'video-section', 
+      video: 'video-instance',
+      autoplay: true,
+      muted: true 
+   };
+
+   var backgroundVideo  = new LightBackgroundVideo(settings);
+   backgroundVideo.init();
+
+ &lt;/script&gt;</code>
+										</pre>
+									<p>Tip: The Class have some methods, you can use for canvas video control. Don't forget to pass scope when you use html events.</p>
+									<pre class="prettyprint">
+<code class="language-javascript">
+ document.getElementById('pause').onclick = function(){
+    backgroundVideo.pause.apply(backgroundVideo); 
+ };
+
+ document.getElementById('play').onclick = function(){
+   backgroundVideo.play.apply(backgroundVideo); 
+ };
+</code>
+									</pre>
+
+									<input type="button" id="play" value="play" />
+									<input type="button" id="pause" value="pause" />
 								</div>
 							</div>
 					</div>
@@ -88,11 +121,15 @@
 
 		var settings = { 
 			target: 'video-section', 
-			video: 'video-instance', 
-			muted: false
+			video: 'video-instance',
+			autoplay : true,
+			muted: true
 		};
 		var backgroundVideo  = new LightBackgroundVideo(settings);
 		backgroundVideo.init();
+
+		document.getElementById('pause').onclick = function(){ backgroundVideo.pause.apply(backgroundVideo); };
+		document.getElementById('play').onclick = function(){ backgroundVideo.play.apply(backgroundVideo); };
   </script>
 
 </body>
