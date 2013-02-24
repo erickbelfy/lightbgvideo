@@ -1,9 +1,14 @@
 Light Background Video
 ============
 
-The simple implementation for run videos on your html background
+**The simple implementation for run videos on your html background**
 
-There are some steps to run the class in your application.
+
+
+You can see the Demo [here](http://erickbelfort.com/lab/lightbgvideo).
+
+
+**There are some steps to run the class in your application.**
 
 
 1- Insert the javascript class in your html body:
