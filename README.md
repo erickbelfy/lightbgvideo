@@ -52,3 +52,4 @@ Tip: The Class have some methods, you can use for canvas video control. Don't fo
    backgroundVideo.play.apply(backgroundVideo); 
  };
 ```
+The Class require HTML 5 support to canvas and video Tag. I suggest don`t use the implementation in old browsers versions
