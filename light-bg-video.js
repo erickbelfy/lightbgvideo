@@ -10,8 +10,8 @@ var LightBackgroundVideo = function(_settings){
 	this.canvasHeight = null;
 	this.vdHandler = 0;
 
-	this.renderTarget = document.getElementById(settings.target);
-	this.video = document.getElementById(settings.video);
+	this.renderTarget = document.getElementById(this.settings.target);
+	this.video = document.getElementById(this.settings.video);
 };
 
 LightBackgroundVideo.prototype.play = function(){
