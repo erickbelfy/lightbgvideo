@@ -56,8 +56,8 @@ LightBackgroundVideo.prototype.appendCanvas = function(){
 LightBackgroundVideo.prototype.setDimensions = function(){
 	this.canvasWidth  = this.renderTarget.clientWidth;
 	this.canvasHeight = this.renderTarget.clientHeight;
-	this.canvas.style.width = '100%';
-	this.canvas.style.height = '100%';
+	this.canvas.width = this.canvasWidth;
+	this.canvas.height = this.canvasHeight;
 };
 
 LightBackgroundVideo.prototype.draw = function(){
